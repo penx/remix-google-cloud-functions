@@ -6,13 +6,13 @@ import type {
   AppLoadContext,
   ServerBuild,
   RequestInit as NodeRequestInit,
-  Response as NodeResponse,
 } from "@remix-run/node";
 import {
   AbortController,
   createRequestHandler as createRemixRequestHandler,
   Headers as NodeHeaders,
   Request as NodeRequest,
+  Response as NodeResponse,
   writeReadableStreamToWritable,
 } from "@remix-run/node";
 
@@ -46,16 +46,27 @@ export function createRequestHandler({
 }): RequestHandler {
   let handleRequest = createRemixRequestHandler(build, mode);
 
-  return async (req: Request, res: Response) => {
-    let request = createRemixRequest(req);
-    let loadContext =
-      typeof getLoadContext === "function"
-        ? getLoadContext(req, res)
-        : undefined;
+  return async (req: GcfRequest, res: GcfResponse) => {
+    try {
+      let request = createRemixRequest(req);
+      let loadContext =
+        typeof getLoadContext === "function"
+          ? getLoadContext(req, res)
+          : undefined;
 
-    let response = (await handleRequest(request, loadContext)) as NodeResponse;
+      let response = (await handleRequest(
+        request,
+        loadContext
+      )) as NodeResponse;
 
-    await sendRemixResponse(res, response);
+      await sendRemixResponse(res, response);
+    } catch (error) {
+      console.error(error);
+      await sendRemixResponse(
+        res,
+        new NodeResponse("Internal Error", { status: 500 })
+      );
+    }
   };
 }
 
