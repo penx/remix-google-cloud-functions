@@ -1,4 +1,14 @@
-# Welcome to Remix!
+# remix-google-cloud-functions
+
+Google Cloud functions request handler for Remix.
+
+## Usage
+
+```sh
+npm i remix-google-cloud-functions @remix-run/node @google-cloud/functions-framework
+```
+
+## About Remix
 
 [Remix](https://remix.run) is a web framework that helps you build better websites with React.
 
