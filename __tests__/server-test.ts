@@ -42,7 +42,7 @@ function createApp() {
   return getTestServer("remixServer");
 }
 
-describe("express createRequestHandler", () => {
+describe("google-cloud-functions createRequestHandler", () => {
   describe("basic requests", () => {
     afterEach(() => {
       mockedCreateRequestHandler.mockReset();
@@ -133,7 +133,7 @@ describe("express createRequestHandler", () => {
   });
 });
 
-describe("express createRemixHeaders", () => {
+describe("google-cloud-functions createRemixHeaders", () => {
   describe("creates fetch headers from express headers", () => {
     it("handles empty headers", () => {
       expect(createRemixHeaders({})).toMatchInlineSnapshot(`
@@ -222,7 +222,7 @@ describe("express createRemixHeaders", () => {
   });
 });
 
-describe("express createRemixRequest", () => {
+describe("google-cloud-functions createRemixRequest", () => {
   it("creates a request with the correct headers", async () => {
     let expressRequest = createRequest({
       url: "/foo/bar",
