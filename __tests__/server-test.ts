@@ -3,6 +3,7 @@ import { createRequest } from "node-mocks-http";
 import {
   createRequestHandler as createRemixRequestHandler,
   Response as NodeResponse,
+  ServerBuild,
 } from "@remix-run/node";
 import { Readable } from "stream";
 import { http } from "@google-cloud/functions-framework";
@@ -35,7 +36,7 @@ function createApp() {
     createRequestHandler({
       // We don't have a real app to test, but it doesn't matter. We
       // won't ever call through to the real createRequestHandler
-      build: undefined,
+      build: undefined as unknown as ServerBuild,
     })
   );
   return getTestServer("remixServer");
@@ -252,6 +253,7 @@ describe("express createRemixRequest", () => {
           "type": null,
         },
         Symbol(Request internals): Object {
+          "credentials": "same-origin",
           "headers": Headers {
             Symbol(query): Array [
               "cache-control",
