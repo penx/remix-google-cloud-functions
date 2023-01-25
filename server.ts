@@ -48,7 +48,7 @@ export function createRequestHandler({
 
   return async (req: GcfRequest, res: GcfResponse) => {
     try {
-      let request = createRemixRequest(req);
+      let request = createRemixRequest(req, res);
       let loadContext =
         typeof getLoadContext === "function"
           ? getLoadContext(req, res)
@@ -90,15 +90,16 @@ export function createRemixHeaders(
   return headers;
 }
 
-export function createRemixRequest(req: GcfRequest): NodeRequest {
+export function createRemixRequest(
+  req: GcfRequest,
+  res: GcfResponse
+): NodeRequest {
   let origin = `${req.protocol}://${req.get("host")}`;
   let url = new URL(req.url, origin);
 
   let controller = new AbortController();
 
-  req.on("close", () => {
-    controller.abort();
-  });
+  res.on("close", () => controller.abort());
 
   let init: NodeRequestInit = {
     method: req.method,
