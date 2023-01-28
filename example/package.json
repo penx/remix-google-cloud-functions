@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "sideEffects": false,
+  "main": "./functions/index.js",
+  "scripts": {
+    "build": "remix build",
+    "dev": "remix dev",
+    "emulators": "firebase emulators:start --project remix-emulator --import=firebase-fixtures",
+    "firebase": "firebase",
+    "start": "remix-serve build",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@remix-run/node": "*",
+    "@remix-run/react": "*",
+    "@remix-run/serve": "*",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.21.2",
+    "isbot": "^3.6.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remix-google-cloud-functions": "*"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "*",
+    "@remix-run/eslint-config": "*",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "eslint": "^8.27.0",
+    "firebase-tools": "^11.21.0",
+    "typescript": "^4.8.4"
+  },
+  "engines": {
+    "node": "16"
+  }
+}
