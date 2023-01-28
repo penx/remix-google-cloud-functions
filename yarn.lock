@@ -5070,9 +5070,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remix-google-cloud-functions@workspace:.":
+"remix-google-cloud-functions@workspace:remix-google-cloud-functions":
   version: 0.0.0-use.local
-  resolution: "remix-google-cloud-functions@workspace:."
+  resolution: "remix-google-cloud-functions@workspace:remix-google-cloud-functions"
   dependencies:
     "@babel/core": ^7.17.5
     "@babel/plugin-proposal-export-namespace-from": ^7.16.7
@@ -5178,6 +5178,12 @@ __metadata:
   checksum: 87f4164e396f0171b0a3386cc1877a817f572148ee13a7e113b238e48e8a9f2f31d009a92ec38a591ff1567d9662c6b67fd8818a2dbbaed74bc26a87a2a4a9a0
   languageName: node
   linkType: hard
+
+"root@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "root@workspace:."
+  languageName: unknown
+  linkType: soft
 
 "safe-buffer@npm:5.2.1, safe-buffer@npm:~5.2.0":
   version: 5.2.1
