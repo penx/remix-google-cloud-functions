@@ -1,5 +1,15 @@
 {
   "private": true,
+  "description": "Remix Adapter for Google Cloud Functions and Firebase Functions",
+  "license": "MIT",
+  "author": "Alasdair McLeay",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/penx/remix-google-cloud-functions"
+  },
+  "bugs": {
+    "url": "https://github.com/penx/remix-google-cloud-functions/issues"
+  },
   "packageManager": "yarn@3.3.1",
   "workspaces": [
     "example",
