@@ -22,6 +22,7 @@
     "remix-google-cloud-functions": "*"
   },
   "devDependencies": {
+    "@playwright/test": "^1.30.0",
     "@remix-run/dev": "*",
     "@remix-run/eslint-config": "*",
     "@types/react": "^18.0.25",
