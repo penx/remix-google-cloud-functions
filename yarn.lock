@@ -6842,6 +6842,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-3bb12e@workspace:example"
   dependencies:
+    "@google-cloud/functions-framework": ^3.1.1
     "@playwright/test": ^1.30.0
     "@remix-run/dev": "*"
     "@remix-run/eslint-config": "*"

@@ -6,7 +6,7 @@
 
 ### Firebase
 
-See the [example project](./example/).
+See the [functions directory](./example/functions/) in the [example project](./example/).
 
 ```sh
 npm i remix-google-cloud-functions @remix-run/node @google-cloud/functions-framework firebase-functions
@@ -28,11 +28,33 @@ module.exports = { remix };
 
 ### Google Cloud Functions
 
+See the [gcf](./example/gcf/) in the [example project](./example/).
+
 ```sh
 npm i remix-google-cloud-functions @remix-run/node @google-cloud/functions-framework
 ```
 
-TBC. Refer to the Firebase example above or follow the [official guide](https://cloud.google.com/functions/docs/writing/write-http-functions)
+`gcf/index.js`
+
+```js
+const { createRequestHandler } = require("remix-google-cloud-functions");
+
+exports.remix = createRequestHandler({
+  build: require("../build"),
+});
+```
+
+To run locally, add a script such as:
+
+`package.json`
+
+```json
+    "start": "functions-framework --source gcf --target=remix --port 5003",
+```
+
+Note this does not serve the static assets.
+
+Further details can be found on the [official guide](https://cloud.google.com/functions/docs/writing/write-http-functions).
 
 ## About Remix
 

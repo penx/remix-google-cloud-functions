@@ -55,11 +55,18 @@ const config: PlaywrightTestConfig = {
   // outputDir: 'test-results/',
 
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: "yarn emulators",
-    reuseExistingServer: true,
-    url: "http://127.0.0.1:5002/",
-  },
+  webServer: [
+    {
+      command: "yarn emulators",
+      reuseExistingServer: !process.env.CI,
+      url: "http://127.0.0.1:5002/",
+    },
+    {
+      command: "yarn gcf",
+      reuseExistingServer: !process.env.CI,
+      url: "http://127.0.0.1:5003/",
+    },
+  ],
 };
 
 export default config;

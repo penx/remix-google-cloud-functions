@@ -7,10 +7,13 @@
     "dev": "remix dev",
     "emulators": "firebase emulators:start --project remix-emulator --import=firebase-fixtures",
     "firebase": "firebase",
+    "gcf": "functions-framework --source gcf --target=remix --port 5003",
     "start": "remix-serve build",
+    "test": "yarn playwright test",
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@google-cloud/functions-framework": "^3.1.1",
     "@remix-run/node": "*",
     "@remix-run/react": "*",
     "@remix-run/serve": "*",
