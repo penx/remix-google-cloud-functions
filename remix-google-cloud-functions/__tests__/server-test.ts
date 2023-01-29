@@ -140,7 +140,7 @@ describe("google-cloud-functions createRemixHeaders", () => {
     it("handles empty headers", () => {
       expect(createRemixHeaders({})).toMatchInlineSnapshot(`
         Headers {
-          Symbol(query): Array [],
+          Symbol(query): [],
           Symbol(context): null,
         }
       `);
@@ -149,7 +149,7 @@ describe("google-cloud-functions createRemixHeaders", () => {
     it("handles simple headers", () => {
       expect(createRemixHeaders({ "x-foo": "bar" })).toMatchInlineSnapshot(`
         Headers {
-          Symbol(query): Array [
+          Symbol(query): [
             "x-foo",
             "bar",
           ],
@@ -162,7 +162,7 @@ describe("google-cloud-functions createRemixHeaders", () => {
       expect(createRemixHeaders({ "x-foo": "bar", "x-bar": "baz" }))
         .toMatchInlineSnapshot(`
         Headers {
-          Symbol(query): Array [
+          Symbol(query): [
             "x-foo",
             "bar",
             "x-bar",
@@ -177,7 +177,7 @@ describe("google-cloud-functions createRemixHeaders", () => {
       expect(createRemixHeaders({ "x-foo": "bar, baz" }))
         .toMatchInlineSnapshot(`
         Headers {
-          Symbol(query): Array [
+          Symbol(query): [
             "x-foo",
             "bar, baz",
           ],
@@ -190,7 +190,7 @@ describe("google-cloud-functions createRemixHeaders", () => {
       expect(createRemixHeaders({ "x-foo": "bar, baz", "x-bar": "baz" }))
         .toMatchInlineSnapshot(`
         Headers {
-          Symbol(query): Array [
+          Symbol(query): [
             "x-foo",
             "bar, baz",
             "x-bar",
@@ -211,7 +211,7 @@ describe("google-cloud-functions createRemixHeaders", () => {
         })
       ).toMatchInlineSnapshot(`
         Headers {
-          Symbol(query): Array [
+          Symbol(query): [
             "set-cookie",
             "__session=some_value; Path=/; Secure; HttpOnly; MaxAge=7200; SameSite=Lax",
             "set-cookie",
@@ -249,7 +249,7 @@ describe("google-cloud-functions createRemixRequest", () => {
         "highWaterMark": 16384,
         "insecureHTTPParser": false,
         "size": 0,
-        Symbol(Body internals): Object {
+        Symbol(Body internals): {
           "body": null,
           "boundary": null,
           "disturbed": false,
@@ -257,10 +257,10 @@ describe("google-cloud-functions createRemixRequest", () => {
           "size": 0,
           "type": null,
         },
-        Symbol(Request internals): Object {
+        Symbol(Request internals): {
           "credentials": "same-origin",
           "headers": Headers {
-            Symbol(query): Array [
+            Symbol(query): [
               "cache-control",
               "max-age=300, s-maxage=3600",
               "host",
