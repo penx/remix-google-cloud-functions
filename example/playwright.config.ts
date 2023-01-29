@@ -57,8 +57,8 @@ const config: PlaywrightTestConfig = {
   /* Run your local dev server before starting the tests */
   webServer: {
     command: "yarn emulators",
-    port: 5002,
     reuseExistingServer: true,
+    url: "http://127.0.0.1:5002/",
   },
 };
 
