@@ -1,8 +1,9 @@
 {
   "name": "remix-google-cloud-functions",
-  "description": "Google Cloud functions request handler for Remix",
+  "description": "Remix Adapter for Google Cloud Functions and Firebase Functions",
   "version": "0.0.3",
   "license": "MIT",
+  "author": "Alasdair McLeay",
   "main": "build/index.js",
   "repository": {
     "type": "git",
@@ -13,7 +14,8 @@
   },
   "scripts": {
     "build": "rm -rf build && tsc -b",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "cp ../README.md ./README.md"
   },
   "peerDependencies": {
     "@google-cloud/functions-framework": "^3.1.1",
