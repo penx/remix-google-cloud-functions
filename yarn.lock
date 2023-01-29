@@ -6947,7 +6947,7 @@ __metadata:
     "@types/react-dom": ^18.0.8
     eslint: ^8.27.0
     firebase-admin: ^11.5.0
-    firebase-functions: ^3.21.2
+    firebase-functions: ^4.2.0
     firebase-tools: ^11.21.0
     isbot: ^3.6.5
     react: ^18.2.0
@@ -7422,21 +7422,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-functions@npm:^3.21.2":
-  version: 3.24.1
-  resolution: "firebase-functions@npm:3.24.1"
+"firebase-functions@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "firebase-functions@npm:4.2.0"
   dependencies:
     "@types/cors": ^2.8.5
     "@types/express": 4.17.3
     cors: ^2.8.5
     express: ^4.17.1
-    lodash: ^4.17.14
     node-fetch: ^2.6.7
   peerDependencies:
-    firebase-admin: ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0
+    firebase-admin: ^10.0.0 || ^11.0.0
   bin:
     firebase-functions: lib/bin/firebase-functions.js
-  checksum: d35711a27b615e2b78cdf63a3b3ca5604c0f8024bc086470a2676a26894e38f124cbb0455e7168bd3f57a0f7258c14c7cd0cd933d8da70d07e999d628d00b458
+  checksum: d9e34594e50e5ddf756d3c3727ebaab4a374f391e67bfc362d96307677047c14888197fb3cd17bdeb81e9abfcd23b0b280e75ee267068a3133c84c9e999f58dd
   languageName: node
   linkType: hard
 
