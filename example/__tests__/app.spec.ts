@@ -2,9 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("all the things", async ({ page }) => {
   await page.goto("http://127.0.0.1:5002/");
-  await expect(page).toHaveTitle("Remix + Firebase", {
-    timeout: 20000,
-  });
+  await expect(page).toHaveTitle("Remix + Firebase");
   await page.getByPlaceholder("you@example.com").fill("user@example.com");
   await page.getByPlaceholder("password").fill("password");
   await page.getByRole("button", { name: "Login" }).click();
