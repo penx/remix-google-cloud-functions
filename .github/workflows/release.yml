@@ -1,0 +1,45 @@
+name: Release Workflow
+on:
+  release:
+    type: created
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install dependencies
+      working-directory: remix-google-cloud-functions
+      run: yarn install --focus
+    - name: Build Adapter
+      working-directory: remix-google-cloud-functions
+      run: yarn build
+    - name: Update version number in package.json
+      run: |
+        NEW_VERSION=$(jq -r ".tag_name" "$GITHUB_EVENT_PATH")
+        sed -i "s/\"version\": \".*\"/\"version\": \"$NEW_VERSION\"/g" package.json
+
+    - name: Commit changes
+      run: |
+        git config --global user.email "github-actions@github.com"
+        git config --global user.name "GitHub Actions"
+        git add package.json
+        git commit -m "Update version number to $NEW_VERSION"
+        git push origin main
+
+    - name: Update release tag
+      run: |
+        git tag -f "$NEW_VERSION"
+        git push origin "$NEW_VERSION"
+
+    - run: npm publish
+      working-directory: remix-google-cloud-functions
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
