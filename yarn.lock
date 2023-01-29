@@ -13706,11 +13706,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"root@workspace:.":
+"root-workspace-0b6124@workspace:.":
   version: 0.0.0-use.local
-  resolution: "root@workspace:."
-  dependencies:
-    "@playwright/test": ^1.30.0
+  resolution: "root-workspace-0b6124@workspace:."
   languageName: unknown
   linkType: soft
 
