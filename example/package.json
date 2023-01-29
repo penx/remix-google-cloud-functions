@@ -14,7 +14,7 @@
     "@remix-run/node": "*",
     "@remix-run/react": "*",
     "@remix-run/serve": "*",
-    "firebase-admin": "^10.0.2",
+    "firebase-admin": "^11.5.0",
     "firebase-functions": "^3.21.2",
     "isbot": "^3.6.5",
     "react": "^18.2.0",
