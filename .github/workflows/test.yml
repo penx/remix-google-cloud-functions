@@ -35,3 +35,13 @@ jobs:
         name: playwright-report
         path: example/playwright-report/
         retention-days: 30
+  automerge:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
