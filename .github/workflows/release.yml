@@ -67,32 +67,32 @@ jobs:
         echo "continue=true" >> $GITHUB_OUTPUT
 
     - name: 🔀 Create Branch
-      if: steps.add.continue
+      if: steps.add.outputs.continue
       run: git checkout -b ${{ steps.version.outputs.branch }}
 
     - name: 💾 Commit Changes
-      if: steps.add.continue
+      if: steps.add.outputs.continue
       run: git commit -m "Release ${{ steps.version.outputs.version }}"
 
     - name: ⬆️ Push Changes
-      if: steps.add.continue
+      if: steps.add.outputs.continue
       run: git push --set-upstream origin ${{ steps.version.outputs.branch }}
         
     - name: 🙋 Open Pull Request
-      if: steps.add.continue
+      if: steps.add.outputs.continue
       env:
         GH_TOKEN: ${{ secrets.RELEASE_PR_GITHUB_TOKEN }}
       run: |
         gh pr create -f -l release
 
     - name: 📝 Draft Prerelease
-      if: steps.add.continue && inputs.release_type == 'prerelease'
+      if: steps.add.outputs.continue && inputs.release_type == 'prerelease'
       env:
         GH_TOKEN: ${{ github.token }}
       run: gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.version.outputs.branch }} --prerelease
 
     - name: 📝 Draft Release
-      if: steps.add.continue && inputs.release_type == 'release'
+      if: steps.add.outputs.continue && inputs.release_type == 'release'
       env:
         GH_TOKEN: ${{ github.token }}
       run: gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.version.outputs.branch }}
