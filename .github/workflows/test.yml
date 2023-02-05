@@ -1,43 +1,58 @@
-name: Test
+name: 🧪 Test
 on:
   push:
-    branches: [ main, master ]
+    branches:
+      - main
   pull_request:
-    branches: [ main, master ]
+    branches:
+      - main
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Get Node version
+    - name: ⬇️ Checkout
+      uses: actions/checkout@v3
+
+    - name: ⎔ Get Node Version
       id: node_version
       run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
-    - uses: actions/setup-node@v3
+
+    - name: ⎔ Setup Node
+      uses: actions/setup-node@v3
       with:
         node-version: '${{ steps.node_version.outputs.NVMRC }}'
-    - name: Install dependencies
+
+    - name: 📦 Install Dependencies
       run: yarn
-    - name: Build Adapter
+
+    - name: 🏗 Build Adapter
       working-directory: remix-google-cloud-functions
       run: yarn build
-    - name: Test Adapter
+
+    - name: 🧪 Unit Tests
       working-directory: remix-google-cloud-functions
       run: yarn test
-    - name: Build Example
+
+    - name: 🏗 Build Example
       working-directory: example
       run: NODE_ENV=development yarn build
-    - name: Install Playwright Browsers
+
+    - name: 🌐 Install Browsers
       working-directory: example
       run: yarn playwright install --with-deps
-    - name: Run Playwright tests
+
+    - name: 🧪 Integration Tests
       working-directory: example
       run: yarn playwright test
-    - uses: actions/upload-artifact@v3
-      if: always()
+
+    - name: 📦 Upload Report
+      uses: actions/upload-artifact@v3
       with:
         name: playwright-report
         path: example/playwright-report/
         retention-days: 30
+
   automerge:
     needs: test
     runs-on: ubuntu-latest
@@ -45,6 +60,7 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: fastify/github-action-merge-dependabot@v3
+      - name: 🤝 Automerge
+        uses: fastify/github-action-merge-dependabot@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,4 +1,4 @@
-name: Publish
+name: 🚀 Publish Release
 on:
   release:
     type: published
@@ -8,39 +8,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
+    - name: ⬇️ Checkout
       uses: actions/checkout@v3
 
-    - name: Get Node version
+    - name: ⎔ Get Node version
       id: node_version
       run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
 
-    - name: Setup Node
+    - name: ⎔ Setup Node
       uses: actions/setup-node@v3
       with:
         node-version: '${{ steps.node_version.outputs.NVMRC }}'
         registry-url: 'https://registry.npmjs.org'
 
-    - name: Install dependencies
+    - name: 📦 Install Dependencies
       working-directory: remix-google-cloud-functions
       run: yarn workspaces focus
 
-    - name: Build Adapter
+    - name: 🏗 Build Adapter
       working-directory: remix-google-cloud-functions
       run: yarn build
 
-    - name: Publish Release
+    - name: 🚀 Publish Release
       if: github.event.release.prerelease == false
       working-directory: remix-google-cloud-functions
       env:
         YARN_NPM_AUTH_TOKEN: ${{ secrets.YARN_NPM_AUTH_TOKEN }}
-      run: |
-        yarn npm publish --tolerate-republish --access public
+      run: yarn npm publish --tolerate-republish --access public
  
-    - name: Publish Prerelease
+    - name: 🚀 Publish Prerelease
       if: github.event.release.prerelease
       working-directory: remix-google-cloud-functions
       env:
         YARN_NPM_AUTH_TOKEN: ${{ secrets.YARN_NPM_AUTH_TOKEN }}
-      run: |
-        yarn npm publish --tolerate-republish --access public --tag next
+      run: yarn npm publish --tolerate-republish --access public --tag next

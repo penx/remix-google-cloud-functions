@@ -1,13 +1,17 @@
-name: Version Check
+name: ⤴️ Version Check
 on:
   pull_request:
     branches:
       - main
+
 jobs:
-  check:
+  version-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - run: yarn version check
+          
+      - name: ⤴️ Version Check
+        run: yarn version check
