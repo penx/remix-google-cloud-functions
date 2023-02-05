@@ -26,7 +26,7 @@ jobs:
 
     - name: Get Node version
       id: node_version
-      run: echo "name=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+      run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
 
     - name: Setup Node
       uses: actions/setup-node@v3
