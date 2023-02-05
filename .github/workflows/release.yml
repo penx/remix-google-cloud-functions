@@ -1,5 +1,4 @@
-name: Release
-
+name: 📝 Draft Release
 on:
   workflow_dispatch:
     inputs:
@@ -20,57 +19,79 @@ jobs:
       pull-requests: write
       
     steps:
-    - name: Checkout main
+    - name: ⬇️ Checkout main
       uses: actions/checkout@v3
       with:
         ref: main
         fetch-depth: 0
 
-    - name: Get Node version
+    - name: ⎔ Get Node version
       id: node_version
       run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
 
-    - name: Setup Node
+    - name: ⎔ Setup Node
       uses: actions/setup-node@v3
       with:
-        node-version: '${{ steps.node_version.outputs.NVMRC }}'
+        node-version: ${{ steps.node_version.outputs.NVMRC }}
         registry-url: 'https://registry.npmjs.org'
 
-    - name: Apply version
-      run: |
-        if [ "${{ inputs.release_type }}" == "prerelease" ]; then
-          yarn version apply --all --prerelease
-        else
-          yarn version apply --all
-        fi
+    - name: ⤴️ Apply Release Version
+      if: inputs.release_type == release
+      run: yarn version apply --all
 
-    - name: Get version number
+    - name: ⤴️ Apply Prerelease Version
+      if: inputs.release_type == prerelease
+      run: yarn version apply --all --prerelease
+
+    - name: 🕵️ Get Version Number
       working-directory: remix-google-cloud-functions
       id: version
-      run: echo "version=$(cat package.json | jq -r '.version')" >> $GITHUB_OUTPUT
+      run: |
+        echo "version=$(cat package.json | jq -r '.version')" >> $GITHUB_OUTPUT
+        echo "branch=releases/v$(cat package.json | jq -r '.version')" >> $GITHUB_OUTPUT
 
-    - name: Get new branch name
-      working-directory: remix-google-cloud-functions
-      id: branch
-      run: echo "name=releases/v${{ steps.version.outputs.version }}" >> $GITHUB_OUTPUT
-
-    - name: Commit and push changes
-      env:
-        GH_TOKEN: ${{ github.token }}
+    - name: 🗜️ Configure Git
       run: |
         git config --local user.email "github-actions@github.com"
         git config --local user.name "GitHub Actions"
+      
+    - name: 📂 Git Add
+      id: add
+      run: |
         git add -A
         if [ -z "$(git status --porcelain)" ]; then
           echo "No changes"
           exit 0
         fi
-        git checkout -b ${{ steps.branch.outputs.name }}
-        git commit -m "Release ${{ steps.version.outputs.version }}"
-        git push --set-upstream origin ${{ steps.branch.outputs.name }}
+        echo "continue=true" >> $GITHUB_OUTPUT
+
+    - name: 🔀 Create Branch
+      if: steps.add.continue
+      run: git checkout -b ${{ steps.version.outputs.branch }}
+
+    - name: 💾 Commit Changes
+      if: steps.add.continue
+      run: git commit -m "Release ${{ steps.version.outputs.version }}"
+
+    - name: ⬆️ Push Changes
+      if: steps.add.continue
+      run: git push --set-upstream origin ${{ steps.version.outputs.branch }}
+        
+    - name: 🙋 Open Pull Request
+      if: steps.add.continue
+      env:
+        GH_TOKEN: ${{ secrets.RELEASE_PR_GITHUB_TOKEN }}
+      run: |
         gh pr create -f -l release
-        if [ "${{ inputs.release_type }}" == "prerelease" ]; then
-          gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.branch.outputs.name }} --prerelease
-        else
-          gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.branch.outputs.name }}
-        fi  
+
+    - name: 📝 Draft Prerelease
+      if: steps.add.continue && inputs.release_type == prerelease
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.version.outputs.branch }} --prerelease
+
+    - name: 📝 Draft Release
+      if: steps.add.continue && inputs.release_type == release
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.version.outputs.branch }}
