@@ -6610,7 +6610,7 @@ __metadata:
     isbot: ^3.6.5
     react: ^18.2.0
     react-dom: ^18.2.0
-    remix-google-cloud-functions: "*"
+    remix-google-cloud-functions: "workspace:*"
     typescript: ^4.9.5
   languageName: unknown
   linkType: soft
@@ -12423,17 +12423,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remix-google-cloud-functions@npm:*":
-  version: 0.0.3
-  resolution: "remix-google-cloud-functions@npm:0.0.3"
-  peerDependencies:
-    "@google-cloud/functions-framework": ^3.1.1
-    "@remix-run/node": ^1.11.1
-  checksum: f328877b129d42af5477930efaa6b9fda7e4d32d563a69092d22a2d6afd95c7b0f374cb6b3bacc2b6a6d0b28e9748a90bdd6084d45a805807debdc3a35bac503
-  languageName: node
-  linkType: hard
-
-"remix-google-cloud-functions@workspace:remix-google-cloud-functions":
+"remix-google-cloud-functions@workspace:*, remix-google-cloud-functions@workspace:remix-google-cloud-functions":
   version: 0.0.0-use.local
   resolution: "remix-google-cloud-functions@workspace:remix-google-cloud-functions"
   dependencies:
