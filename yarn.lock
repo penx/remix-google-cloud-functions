@@ -6610,7 +6610,7 @@ __metadata:
     isbot: ^3.6.5
     react: ^18.2.0
     react-dom: ^18.2.0
-    remix-google-cloud-functions: "*"
+    remix-google-cloud-functions: "workspace:*"
     typescript: ^4.9.5
   languageName: unknown
   linkType: soft
@@ -12423,7 +12423,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remix-google-cloud-functions@*, remix-google-cloud-functions@workspace:remix-google-cloud-functions":
+"remix-google-cloud-functions@workspace:*, remix-google-cloud-functions@workspace:remix-google-cloud-functions":
   version: 0.0.0-use.local
   resolution: "remix-google-cloud-functions@workspace:remix-google-cloud-functions"
   dependencies:
