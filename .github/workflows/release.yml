@@ -54,6 +54,8 @@ jobs:
       run: echo "name=releases/v${{ steps.version.outputs.version }}" >> $GITHUB_OUTPUT
 
     - name: Commit and push changes
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
         git config --local user.email "github-actions@github.com"
         git config --local user.name "GitHub Actions"
