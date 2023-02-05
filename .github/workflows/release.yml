@@ -70,7 +70,7 @@ jobs:
         git push --set-upstream origin ${{ steps.branch.outputs.name }}
         gh pr create -f -l release
         if [ "${{ inputs.release_type }}" == "prerelease" ]; then
-          gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target-branch ${{ steps.branch.outputs.name }} --prerelease
+          gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.branch.outputs.name }} --prerelease
         else
-          gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target-branch ${{ steps.branch.outputs.name }}
+          gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.branch.outputs.name }}
         fi  
