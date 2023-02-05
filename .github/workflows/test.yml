@@ -22,6 +22,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '${{ steps.node_version.outputs.NVMRC }}'
+        cache: yarn
 
     - name: 📦 Install Dependencies
       run: yarn
