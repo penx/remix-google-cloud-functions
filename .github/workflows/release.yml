@@ -81,7 +81,7 @@ jobs:
     - name: 🙋 Open Pull Request
       if: steps.add.outputs.continue
       env:
-        GH_TOKEN: ${{ secrets.RELEASE_PR_GITHUB_TOKEN }}
+        GH_TOKEN: ${{ github.token }}
       run: |
         gh pr create -f -l release
 
