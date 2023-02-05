@@ -29,13 +29,18 @@ jobs:
       working-directory: remix-google-cloud-functions
       run: yarn build
 
-    - name: Publish
+    - name: Publish Release
+      if: github.event.release.prerelease == false
       working-directory: remix-google-cloud-functions
       env:
         YARN_NPM_AUTH_TOKEN: ${{ secrets.YARN_NPM_AUTH_TOKEN }}
       run: |
-        if [ "${{ inputs.release_type }}" == "prerelease" ]; then
-          yarn npm publish --tolerate-republish --access public --tag next
-        else
-          yarn npm publish --tolerate-republish --access public
-        fi
+        yarn npm publish --tolerate-republish --access public
+ 
+    - name: Publish Prerelease
+      if: github.event.release.prerelease
+      working-directory: remix-google-cloud-functions
+      env:
+        YARN_NPM_AUTH_TOKEN: ${{ secrets.YARN_NPM_AUTH_TOKEN }}
+      run: |
+        yarn npm publish --tolerate-republish --access public --tag next
