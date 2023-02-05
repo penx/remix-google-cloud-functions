@@ -23,6 +23,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         ref: main
+        fetch-depth: 0
 
     - name: Get Node version
       id: node_version
@@ -42,23 +43,15 @@ jobs:
           yarn version apply --all
         fi
 
-    - name: Build
-      run: yarn workspace remix-google-cloud-functions build
-
-    - name: Publish
-      env:
-        YARN_NPM_AUTH_TOKEN: ${{ secrets.YARN_NPM_AUTH_TOKEN }}
-      run: |
-        if [ "${{ inputs.release_type }}" == "prerelease" ]; then
-          yarn workspace remix-google-cloud-functions npm publish --tolerate-republish --access public --tag next
-        else
-          yarn workspace remix-google-cloud-functions npm publish --tolerate-republish --access public
-        fi
-
     - name: Get version number
       working-directory: remix-google-cloud-functions
       id: version
       run: echo "version=$(cat package.json | jq -r '.version')" >> $GITHUB_OUTPUT
+
+    - name: Get new branch name
+      working-directory: remix-google-cloud-functions
+      id: branch
+      run: echo "name=releases/v${{ steps.version.outputs.version }}" >> $GITHUB_OUTPUT
 
     - name: Commit and push changes
       run: |
@@ -69,5 +62,12 @@ jobs:
           echo "No changes"
           exit 0
         fi
-        git commit -m "Release remix-google-cloud-functions ${{ steps.version.outputs.version }}"
-        git push
+        git checkout -b ${{ steps.branch.outputs.name }}
+        git commit -m "Release ${{ steps.version.outputs.version }}"
+        git push --set-upstream origin ${{ steps.branch.outputs.name }}
+        gh pr create -f -l release
+        if [ "${{ inputs.release_type }}" == "prerelease" ]; then
+          gh release create v${{ steps.version.outputs.version } --generate-notes --draft --target-branch ${{ steps.branch.outputs.name }} --prerelease
+        else
+          gh release create v${{ steps.version.outputs.version } --generate-notes --draft --target-branch ${{ steps.branch.outputs.name }}
+        fi  

@@ -1,0 +1,41 @@
+name: Publish
+on:
+  release:
+    type: published
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Get Node version
+      id: node_version
+      run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '${{ steps.node_version.outputs.NVMRC }}'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install dependencies
+      working-directory: remix-google-cloud-functions
+      run: yarn workspaces focus
+
+    - name: Build Adapter
+      working-directory: remix-google-cloud-functions
+      run: yarn build
+
+    - name: Publish
+      working-directory: remix-google-cloud-functions
+      env:
+        YARN_NPM_AUTH_TOKEN: ${{ secrets.YARN_NPM_AUTH_TOKEN }}
+      run: |
+        if [ "${{ inputs.release_type }}" == "prerelease" ]; then
+          yarn npm publish --tolerate-republish --access public --tag next
+        else
+          yarn npm publish --tolerate-republish --access public
+        fi
