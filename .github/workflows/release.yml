@@ -1,13 +1,13 @@
-name: Publish Package
+name: Release
 
 on:
   workflow_dispatch:
     inputs:
       release_type:
-        description: 'Release or prerelease'
+        type: choice
+        description: Release or prerelease
         required: true
-        type: string
-        default: 'prerelease'
+        default: prerelease
         options:
           - prerelease
           - release
@@ -22,10 +22,15 @@ jobs:
       with:
         ref: main
 
+    - name: Get Node version
+      id: node_version
+      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
-        node-version: 16
+        node-version: '${{ steps.node_version.outputs.NVMRC }}'
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Apply version
       run: |
@@ -39,6 +44,8 @@ jobs:
       run: yarn workspace remix-google-cloud-functions build
 
     - name: Publish
+      env:
+        YARN_NPM_AUTH_TOKEN: ${{ secrets.YARN_NPM_AUTH_TOKEN }}
       run: |
         if [ "${{ inputs.release_type }}" == "prerelease" ]; then
           yarn workspace remix-google-cloud-functions npm publish --tolerate-republish --access public --tag next
