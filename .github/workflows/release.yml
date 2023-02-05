@@ -1,0 +1,64 @@
+name: Publish Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release or prerelease'
+        required: true
+        type: string
+        default: 'prerelease'
+        options:
+          - prerelease
+          - release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout main
+      uses: actions/checkout@v3
+      with:
+        ref: main
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Apply version
+      run: |
+        if [ "${{ inputs.release_type }}" == "prerelease" ]; then
+          yarn version apply --all --prerelease
+        else
+          yarn version apply --all
+        fi
+
+    - name: Build
+      run: yarn workspace remix-google-cloud-functions build
+
+    - name: Publish
+      run: |
+        if [ "${{ inputs.release_type }}" == "prerelease" ]; then
+          yarn workspace remix-google-cloud-functions npm publish --tolerate-republish --access public --tag next
+        else
+          yarn workspace remix-google-cloud-functions npm publish --tolerate-republish --access public
+        fi
+
+    - name: Get version number
+      working-directory: remix-google-cloud-functions
+      id: version
+      run: echo "::set-output name=version::$(cat package.json | jq -r '.version')"
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "github-actions@github.com"
+        git config --local user.name "GitHub Actions"
+        git add -A
+        if [ -z "$(git status --porcelain)" ]; then
+          echo "No changes"
+          exit 0
+        fi
+        git commit -m "Release remix-google-cloud-functions ${{ steps.version.outputs.version }}"
+        git push
