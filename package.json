@@ -10,7 +10,7 @@
   "bugs": {
     "url": "https://github.com/penx/remix-google-cloud-functions/issues"
   },
-  "packageManager": "yarn@3.3.1",
+  "packageManager": "yarn@3.4.1",
   "workspaces": [
     "example",
     "remix-google-cloud-functions"
