@@ -1,7 +1,7 @@
 {
   "name": "remix-google-cloud-functions",
   "description": "Remix Adapter for Google Cloud Functions and Firebase Functions",
-  "version": "0.1.0-rc.2",
+  "version": "0.1.0-rc.3",
   "license": "MIT",
   "author": "Alasdair McLeay",
   "main": "build/index.js",
