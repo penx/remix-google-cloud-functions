@@ -87,26 +87,20 @@ jobs:
       run: git push --set-upstream origin ${{ steps.version.outputs.branch }}
         
     - name: 📝 Draft Prerelease
-      id: draft-prerelease
       if: steps.add.outputs.continue && inputs.release_type == 'prerelease'
       env:
         GH_TOKEN: ${{ github.token }}
-      run: |
-        OUTPUT=$(gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.version.outputs.branch }} --prerelease)
-        echo "output=$OUTPUT" >> $GITHUB_OUTPUT
+      run: gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.version.outputs.branch }} --prerelease
 
     - name: 📝 Draft Release
-      id: draft-release
       if: steps.add.outputs.continue && inputs.release_type == 'release'
       env:
         GH_TOKEN: ${{ github.token }}
-      run: |
-        OUTPUT=$(gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.version.outputs.branch }})
-        echo "output=$OUTPUT" >> $GITHUB_OUTPUT
+      run: gh release create v${{ steps.version.outputs.version }} --generate-notes --draft --target ${{ steps.version.outputs.branch }}
 
     - name: 🙋 Open Pull Request
       if: steps.add.outputs.continue
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
-        gh pr create -f -l release -b "Close and reopen to run actions.\n\n${{ steps.draft-release.outputs.output }}${{ steps.release.outputs.output }}"
+        gh pr create -f -l release -b "Close and reopen to run actions, merge, then [publish](https://github.com/penx/remix-google-cloud-functions/releases/)."
