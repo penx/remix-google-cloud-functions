@@ -66,14 +66,6 @@ jobs:
         fi
         echo "continue=true" >> $GITHUB_OUTPUT
 
-    - name: 🔧️ Fix Prerelease
-      # When committing the package.json, we don't want this to result in a failed `yarn version check`
-      # See https://github.com/yarnpkg/berry/issues/2569
-      if: steps.add.outputs.continue && inputs.release_type == 'prerelease'
-      run: |
-        yarn workspace remix-google-cloud-functions version decline -d
-        git add -A
-
     - name: 🔀 Create Branch
       if: steps.add.outputs.continue
       run: git checkout -b ${{ steps.version.outputs.branch }}
