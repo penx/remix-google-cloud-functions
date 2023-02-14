@@ -5043,17 +5043,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "commander@npm:10.0.0"
+  checksum: 9f6495651f878213005ac744dd87a85fa3d9f2b8b90d1c19d0866d666bda7f735adfd7c2f10dfff345782e2f80ea258f98bb4efcef58e4e502f25f883940acfd
+  languageName: node
+  linkType: hard
+
 "commander@npm:^4.0.1":
   version: 4.1.1
   resolution: "commander@npm:4.1.1"
   checksum: d7b9913ff92cae20cb577a4ac6fcc121bd6223319e54a40f51a14740a681ad5c574fd29a57da478a5f234a6fa6c52cbf0b7c641353e03c648b1ae85ba670b977
-  languageName: node
-  linkType: hard
-
-"commander@npm:^9.4.0":
-  version: 9.5.0
-  resolution: "commander@npm:9.5.0"
-  checksum: c7a3e27aa59e913b54a1bafd366b88650bc41d6651f0cbe258d4ff09d43d6a7394232a4dadd0bf518b3e696fdf595db1028a0d82c785b88bd61f8a440cecfade
   languageName: node
   linkType: hard
 
@@ -6656,7 +6656,7 @@ __metadata:
     eslint: ^8.34.0
     firebase-admin: ^11.5.0
     firebase-functions: ^4.2.1
-    firebase-tools: ^11.22.0
+    firebase-tools: ^11.23.1
     isbot: ^3.6.6
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -7078,9 +7078,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:^11.22.0":
-  version: 11.22.0
-  resolution: "firebase-tools@npm:11.22.0"
+"firebase-tools@npm:^11.23.1":
+  version: 11.23.1
+  resolution: "firebase-tools@npm:11.23.1"
   dependencies:
     "@google-cloud/pubsub": ^3.0.1
     abort-controller: ^3.0.0
@@ -7130,7 +7130,7 @@ __metadata:
     stream-chain: ^2.2.4
     stream-json: ^1.7.3
     strip-ansi: ^6.0.1
-    superstatic: ^9.0.2
+    superstatic: ^9.0.3
     tar: ^6.1.11
     tcp-port-used: ^1.0.2
     tmp: ^0.2.1
@@ -7144,7 +7144,7 @@ __metadata:
     ws: ^7.2.3
   bin:
     firebase: lib/bin/firebase.js
-  checksum: ce9eeefee54656f93f89bb788e81cb4ced684db573fd093dad04e04c2da54b54c810ca7b3a6e621d52ed123a3b1e2c4f07d8cd0d0eebef105cc3b49d65188511
+  checksum: 53e138d168c49cd827c0254e2533f501236c751720bc1e4907125623a615f5e2da0594a558af11ce55f6e1957620313b0f45861850b80ec3cf9dfc1428506645
   languageName: node
   linkType: hard
 
@@ -10840,6 +10840,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minimatch@npm:^6.1.6":
+  version: 6.2.0
+  resolution: "minimatch@npm:6.2.0"
+  dependencies:
+    brace-expansion: ^2.0.1
+  checksum: 0ffb77d05bd483fcc344ba3e64a501d569e658fa6c592d94e9716ffc7925de7a8c2ac294cafa822b160bd8b2cbf7e01012917e06ffb9a85cfa9604629b3f2c04
+  languageName: node
+  linkType: hard
+
 "minimist@npm:^1.2.0, minimist@npm:^1.2.6, minimist@npm:^1.2.7":
   version: 1.2.7
   resolution: "minimist@npm:1.2.7"
@@ -13588,12 +13597,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superstatic@npm:^9.0.2":
-  version: 9.0.2
-  resolution: "superstatic@npm:9.0.2"
+"superstatic@npm:^9.0.3":
+  version: 9.0.3
+  resolution: "superstatic@npm:9.0.3"
   dependencies:
     basic-auth-connect: ^1.0.0
-    commander: ^9.4.0
+    commander: ^10.0.0
     compression: ^1.7.0
     connect: ^3.7.0
     destroy: ^1.0.4
@@ -13603,7 +13612,7 @@ __metadata:
     join-path: ^1.1.1
     lodash: ^4.17.19
     mime-types: ^2.1.35
-    minimatch: ^5.1.0
+    minimatch: ^6.1.6
     morgan: ^1.8.2
     on-finished: ^2.2.0
     on-headers: ^1.0.0
@@ -13616,7 +13625,7 @@ __metadata:
       optional: true
   bin:
     superstatic: lib/bin/server.js
-  checksum: 7877ddbd61f35cfd146760e31e7515d5859340f2ec01c9a44cfcc986f98629b3744c767f657c28255a76910d27f7aa62b4f086d68310edf0bd22edbb636f6a55
+  checksum: 321167b63d39c6f47a5c4bb2da42c9e0f4640995fce2cbdcc43bb12e56a7e7b4ad69c694d464b0abf61c1a64262ca292eeda46f74c2b3ee058795806db398256
   languageName: node
   linkType: hard
 
