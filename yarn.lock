@@ -2664,8 +2664,8 @@ __metadata:
   linkType: hard
 
 "@remix-run/dev@npm:*":
-  version: 1.12.0
-  resolution: "@remix-run/dev@npm:1.12.0"
+  version: 1.13.0
+  resolution: "@remix-run/dev@npm:1.13.0"
   dependencies:
     "@babel/core": ^7.18.6
     "@babel/generator": ^7.18.6
@@ -2678,7 +2678,7 @@ __metadata:
     "@babel/types": ^7.20.2
     "@esbuild-plugins/node-modules-polyfill": ^0.1.4
     "@npmcli/package-json": ^2.0.0
-    "@remix-run/server-runtime": 1.12.0
+    "@remix-run/server-runtime": 1.13.0
     "@vanilla-extract/integration": ^6.0.2
     arg: ^5.0.1
     cacache: ^15.0.5
@@ -2704,6 +2704,7 @@ __metadata:
     ora: ^5.4.1
     postcss: ^8.4.19
     postcss-discard-duplicates: ^5.1.0
+    postcss-load-config: ^4.0.1
     postcss-modules: ^6.0.0
     prettier: 2.7.1
     pretty-ms: ^7.0.1
@@ -2718,13 +2719,13 @@ __metadata:
     ws: ^7.4.5
     xdm: ^2.0.0
   peerDependencies:
-    "@remix-run/serve": ^1.12.0
+    "@remix-run/serve": ^1.13.0
   peerDependenciesMeta:
     "@remix-run/serve":
       optional: true
   bin:
     remix: dist/cli.js
-  checksum: 318a9aa0f6074500fd049133008da171e6b2dd7be0c38d4590dcedf6d58d3abc7d9eaf38d6acbc88d402d5d2a1fb3c396e3f0c36ebd1fe46652122e9cb81de2c
+  checksum: 37a0574605bcf2a8a0f683ba378368604b2deb4217d6f4e08ad113633d74aad41573dfb9b0f1f4bedf7435b83d43865d11a4cebf49fa9eabc7e2f39da67a2985
   languageName: node
   linkType: hard
 
@@ -2808,6 +2809,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remix-run/router@npm:1.3.2":
+  version: 1.3.2
+  resolution: "@remix-run/router@npm:1.3.2"
+  checksum: ee2108b87d4a1241cdea137dd7e1741ee679228bd33fd81e22a6bb2940f81186cefe9a85e26d60cc49bbcc1bdbc57d1954b7d4d62f8a51ef69feddfc899f55fa
+  languageName: node
+  linkType: hard
+
 "@remix-run/serve@npm:*":
   version: 1.12.0
   resolution: "@remix-run/serve@npm:1.12.0"
@@ -2834,6 +2842,21 @@ __metadata:
     set-cookie-parser: ^2.4.8
     source-map: ^0.7.3
   checksum: 67b4d433a9b9ef494b9e2c5691a08b627697f197f7973d9c0b36904becf402d8389b19cf4978ed69a2e918045206bb7382c1f5933b562c7b0358dfbc1eecda0b
+  languageName: node
+  linkType: hard
+
+"@remix-run/server-runtime@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@remix-run/server-runtime@npm:1.13.0"
+  dependencies:
+    "@remix-run/router": 1.3.2
+    "@types/cookie": ^0.4.0
+    "@types/react": ^18.0.15
+    "@web3-storage/multipart-parser": ^1.0.0
+    cookie: ^0.4.1
+    set-cookie-parser: ^2.4.8
+    source-map: ^0.7.3
+  checksum: 4e055d79ed6572da8ecda81b679a254d73e750fac0d0d08c86b7c2e987550d3b21c6569a4775c41bc3cf545223c0d52348510298876a40719c716f7cbd1ff621
   languageName: node
   linkType: hard
 
@@ -9957,6 +9980,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lilconfig@npm:^2.0.5":
+  version: 2.0.6
+  resolution: "lilconfig@npm:2.0.6"
+  checksum: 40a3cd72f103b1be5975f2ac1850810b61d4053e20ab09be8d3aeddfe042187e1ba70b4651a7e70f95efa1642e7dc8b2ae395b317b7d7753b241b43cef7c0f7d
+  languageName: node
+  linkType: hard
+
 "limiter@npm:^1.1.5":
   version: 1.1.5
   resolution: "limiter@npm:1.1.5"
@@ -11896,6 +11926,24 @@ __metadata:
   peerDependencies:
     postcss: ^8.2.15
   checksum: 88d6964201b1f4ed6bf7a32cefe68e86258bb6e42316ca01d9b32bdb18e7887d02594f89f4a2711d01b51ea6e3fcca8c54be18a59770fe5f4521c61d3eb6ca35
+  languageName: node
+  linkType: hard
+
+"postcss-load-config@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "postcss-load-config@npm:4.0.1"
+  dependencies:
+    lilconfig: ^2.0.5
+    yaml: ^2.1.1
+  peerDependencies:
+    postcss: ">=8.0.9"
+    ts-node: ">=9.0.0"
+  peerDependenciesMeta:
+    postcss:
+      optional: true
+    ts-node:
+      optional: true
+  checksum: b61f890499ed7dcda1e36c20a9582b17d745bad5e2b2c7bc96942465e406bc43ae03f270c08e60d1e29dab1ee50cb26970b5eb20c9aae30e066e20bd607ae4e4
   languageName: node
   linkType: hard
 
@@ -15063,7 +15111,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^2.1.3":
+"yaml@npm:^2.1.1, yaml@npm:^2.1.3":
   version: 2.2.1
   resolution: "yaml@npm:2.2.1"
   checksum: 84f68cbe462d5da4e7ded4a8bded949ffa912bc264472e5a684c3d45b22d8f73a3019963a32164023bdf3d83cfb6f5b58ff7b2b10ef5b717c630f40bd6369a23
