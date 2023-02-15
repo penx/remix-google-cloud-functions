@@ -2714,18 +2714,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remix-run/express@npm:1.12.0":
-  version: 1.12.0
-  resolution: "@remix-run/express@npm:1.12.0"
+"@remix-run/express@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@remix-run/express@npm:1.13.0"
   dependencies:
-    "@remix-run/node": 1.12.0
+    "@remix-run/node": 1.13.0
   peerDependencies:
     express: ^4.17.1
-  checksum: 73cc6c7f48d76a5ff5120e1b38e5915f0a905153ae95d629e0a0410460486f76105964b867d06044c3329be68a8df778cef343f4236d5e265edf0cd1d5e31643
+  checksum: dab94a1e791553ce18a28a6af704ccf056b047d7ef7e1df8625259759a4c7935eacd0aaf219445dd31215896342dd496cb20a0c2ed4eafcaf5ceebebfeda9744
   languageName: node
   linkType: hard
 
-"@remix-run/node@npm:*, @remix-run/node@npm:1.12.0":
+"@remix-run/node@npm:*":
   version: 1.12.0
   resolution: "@remix-run/node@npm:1.12.0"
   dependencies:
@@ -2742,7 +2742,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remix-run/node@npm:^1.13.0":
+"@remix-run/node@npm:1.13.0, @remix-run/node@npm:^1.13.0":
   version: 1.13.0
   resolution: "@remix-run/node@npm:1.13.0"
   dependencies:
@@ -2788,16 +2788,16 @@ __metadata:
   linkType: hard
 
 "@remix-run/serve@npm:*":
-  version: 1.12.0
-  resolution: "@remix-run/serve@npm:1.12.0"
+  version: 1.13.0
+  resolution: "@remix-run/serve@npm:1.13.0"
   dependencies:
-    "@remix-run/express": 1.12.0
+    "@remix-run/express": 1.13.0
     compression: ^1.7.4
     express: ^4.17.1
     morgan: ^1.10.0
   bin:
     remix-serve: dist/cli.js
-  checksum: ba81340664550cfd763a37df0ead946d8cc3da2d5a66297083ec27acea22c190f380b6a9c3e9a405afb367fba2419352e29f577dfdf5be7d7f2ac6ed867c3057
+  checksum: 063f8958b5c52e48b18831c11247cdc5a3a446b30830902af36eb59e30129af3462418d07e8124b1cbdd170f27f374971a3329394d425de403e7f8f4c1b72f6d
   languageName: node
   linkType: hard
 
