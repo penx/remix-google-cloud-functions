@@ -2919,7 +2919,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remix-run/node@npm:*, @remix-run/node@npm:^1.13.0":
+"@remix-run/node@npm:*":
   version: 1.13.0
   resolution: "@remix-run/node@npm:1.13.0"
   dependencies:
@@ -2936,7 +2936,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remix-run/node@npm:1.14.0":
+"@remix-run/node@npm:1.14.0, @remix-run/node@npm:^1.14.0":
   version: 1.14.0
   resolution: "@remix-run/node@npm:1.14.0"
   dependencies:
@@ -12815,7 +12815,7 @@ __metadata:
     "@babel/preset-react": ^7.16.7
     "@babel/preset-typescript": ^7.21.0
     "@google-cloud/functions-framework": ^3.1.1
-    "@remix-run/node": ^1.13.0
+    "@remix-run/node": ^1.14.0
     "@types/jest": ^29.4.0
     "@types/supertest": ^2.0.10
     babel-jest: ^29.4.3
@@ -12828,7 +12828,7 @@ __metadata:
     typescript: ^4.9.5
   peerDependencies:
     "@google-cloud/functions-framework": ^3.1.1
-    "@remix-run/node": ^1.13.0
+    "@remix-run/node": ^1.14.0
   languageName: unknown
   linkType: soft
 
