@@ -2812,8 +2812,8 @@ __metadata:
   linkType: hard
 
 "@remix-run/dev@npm:*":
-  version: 1.13.0
-  resolution: "@remix-run/dev@npm:1.13.0"
+  version: 1.14.0
+  resolution: "@remix-run/dev@npm:1.14.0"
   dependencies:
     "@babel/core": ^7.18.6
     "@babel/generator": ^7.18.6
@@ -2826,7 +2826,7 @@ __metadata:
     "@babel/types": ^7.20.2
     "@esbuild-plugins/node-modules-polyfill": ^0.1.4
     "@npmcli/package-json": ^2.0.0
-    "@remix-run/server-runtime": 1.13.0
+    "@remix-run/server-runtime": 1.14.0
     "@vanilla-extract/integration": ^6.0.2
     arg: ^5.0.1
     cacache: ^15.0.5
@@ -2857,6 +2857,7 @@ __metadata:
     prettier: 2.7.1
     pretty-ms: ^7.0.1
     proxy-agent: ^5.0.0
+    react-refresh: ^0.14.0
     recast: ^0.21.5
     remark-frontmatter: 4.0.1
     remark-mdx-frontmatter: ^1.0.1
@@ -2867,13 +2868,13 @@ __metadata:
     ws: ^7.4.5
     xdm: ^2.0.0
   peerDependencies:
-    "@remix-run/serve": ^1.13.0
+    "@remix-run/serve": ^1.14.0
   peerDependenciesMeta:
     "@remix-run/serve":
       optional: true
   bin:
     remix: dist/cli.js
-  checksum: 37a0574605bcf2a8a0f683ba378368604b2deb4217d6f4e08ad113633d74aad41573dfb9b0f1f4bedf7435b83d43865d11a4cebf49fa9eabc7e2f39da67a2985
+  checksum: b35aae74411f501d8f65d7e3f50d202ae3e1e3c3aec9082bf8373721e8858430f1e2021644e320c7aa3f967cc72793bacf7fa7c16b91920dd9b2aa5154eb9ccf
   languageName: node
   linkType: hard
 
@@ -12521,6 +12522,13 @@ __metadata:
   version: 18.2.0
   resolution: "react-is@npm:18.2.0"
   checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
+  languageName: node
+  linkType: hard
+
+"react-refresh@npm:^0.14.0":
+  version: 0.14.0
+  resolution: "react-refresh@npm:0.14.0"
+  checksum: dc69fa8c993df512f42dd0f1b604978ae89bd747c0ed5ec595c0cc50d535fb2696619ccd98ae28775cc01d0a7c146a532f0f7fb81dc22e1977c242a4912312f4
   languageName: node
   linkType: hard
 
