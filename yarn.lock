@@ -6886,7 +6886,7 @@ __metadata:
     firebase-admin: ^11.5.0
     firebase-functions: ^4.2.1
     firebase-tools: ^11.24.1
-    isbot: ^3.6.6
+    isbot: ^3.6.7
     react: ^18.2.0
     react-dom: ^18.2.0
     remix-google-cloud-functions: "workspace:*"
@@ -9003,10 +9003,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbot@npm:^3.6.6":
-  version: 3.6.6
-  resolution: "isbot@npm:3.6.6"
-  checksum: bd7fe95ed05b708650822040cb72f77a5f0c922207e8d3ccc0e3d9788fb6039e15c64d79b9c9f7dd91f88904c63a4dd1cd4974d918accfd203cb55dbfe4adcac
+"isbot@npm:^3.6.7":
+  version: 3.6.7
+  resolution: "isbot@npm:3.6.7"
+  checksum: 66d85b38211a4944b7655febf5f975d9b5182b93c44d340f9d8bd4bc05dc289f5721639a21a965a4ef6e11d550712f99a49b8a6deb8bfa7094452c066d098b90
   languageName: node
   linkType: hard
 
