@@ -2955,7 +2955,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remix-run/node@npm:1.14.1, @remix-run/node@npm:^1.14.1":
+"@remix-run/node@npm:1.14.1":
   version: 1.14.1
   resolution: "@remix-run/node@npm:1.14.1"
   dependencies:
@@ -2969,6 +2969,23 @@ __metadata:
     source-map-support: ^0.5.21
     stream-slice: ^0.1.2
   checksum: e0d6dee90efcdee1a12ae180a32d698559ec55c0fc169d5ad10b69835a611e231606c2e535ab67e3a0171d941323bf6c097d12953be14764fcdfec52012710c3
+  languageName: node
+  linkType: hard
+
+"@remix-run/node@npm:^1.14.2":
+  version: 1.14.2
+  resolution: "@remix-run/node@npm:1.14.2"
+  dependencies:
+    "@remix-run/server-runtime": 1.14.2
+    "@remix-run/web-fetch": ^4.3.2
+    "@remix-run/web-file": ^3.0.2
+    "@remix-run/web-stream": ^1.0.3
+    "@web3-storage/multipart-parser": ^1.0.0
+    abort-controller: ^3.0.0
+    cookie-signature: ^1.1.0
+    source-map-support: ^0.5.21
+    stream-slice: ^0.1.2
+  checksum: e08d0d1e458a5196ab2dad875b2c7e81e70c2a0ef3c910dc824b0b6ee59093d8ab5e540cc846df195f3516662f37bff6acc33fdf41006aa72e2b392d053867ab
   languageName: node
   linkType: hard
 
@@ -3034,6 +3051,21 @@ __metadata:
     set-cookie-parser: ^2.4.8
     source-map: ^0.7.3
   checksum: df993b869ad6697890f6d9faf82ad074edd993c02c5de4cdb5e26b59244949b3c9ebd66c47587e1a943f410dca5da6d1748ea52a5b6cc4ca1b94098d14132e9b
+  languageName: node
+  linkType: hard
+
+"@remix-run/server-runtime@npm:1.14.2":
+  version: 1.14.2
+  resolution: "@remix-run/server-runtime@npm:1.14.2"
+  dependencies:
+    "@remix-run/router": 1.3.3
+    "@types/cookie": ^0.4.0
+    "@types/react": ^18.0.15
+    "@web3-storage/multipart-parser": ^1.0.0
+    cookie: ^0.4.1
+    set-cookie-parser: ^2.4.8
+    source-map: ^0.7.3
+  checksum: 4c1ec01c77c99488cb52d9ecb230d2dc76890fed8b2b315dd3f93071afe324cc8ff7aea0a9c9d5e41828b76d5401a75f0d920b46a51a0a80f1ec2143bdef8ba9
   languageName: node
   linkType: hard
 
@@ -12852,7 +12884,7 @@ __metadata:
     "@babel/preset-react": ^7.16.7
     "@babel/preset-typescript": ^7.21.0
     "@google-cloud/functions-framework": ^3.1.1
-    "@remix-run/node": ^1.14.1
+    "@remix-run/node": ^1.14.2
     "@types/jest": ^29.4.1
     "@types/supertest": ^2.0.10
     babel-jest: ^29.5.0
@@ -12865,7 +12897,7 @@ __metadata:
     typescript: ^4.9.5
   peerDependencies:
     "@google-cloud/functions-framework": ^3.1.1
-    "@remix-run/node": ^1.14.1
+    "@remix-run/node": ^1.14.2
   languageName: unknown
   linkType: soft
 
