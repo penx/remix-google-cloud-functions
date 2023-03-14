@@ -3040,8 +3040,8 @@ __metadata:
   linkType: hard
 
 "@remix-run/react@npm:*":
-  version: 1.14.1
-  resolution: "@remix-run/react@npm:1.14.1"
+  version: 1.14.2
+  resolution: "@remix-run/react@npm:1.14.2"
   dependencies:
     "@remix-run/router": 1.3.3
     react-router-dom: 6.8.2
@@ -3049,7 +3049,7 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
     react-dom: ">=16.8"
-  checksum: 747c05e852174b000e83a0875b6b6b46316817ba219c5e7a3cb2f88fddb42b0749bf03d4c4c5dddb41f834370fd0bf720ae960586623d2451a7502338e4f0bfe
+  checksum: 284fdb56d454519bd437d64ba99ddddcf4345e7660d4f6ad6209cb59ee044bc6cfd162779a3d7f2e4973a462c480f63a48c40ef56d49f7d280e0779dd140252d
   languageName: node
   linkType: hard
 
