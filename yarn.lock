@@ -2897,8 +2897,8 @@ __metadata:
   linkType: hard
 
 "@remix-run/eslint-config@npm:*":
-  version: 1.14.1
-  resolution: "@remix-run/eslint-config@npm:1.14.1"
+  version: 1.14.2
+  resolution: "@remix-run/eslint-config@npm:1.14.2"
   dependencies:
     "@babel/core": ^7.19.1
     "@babel/eslint-parser": ^7.19.1
@@ -2923,7 +2923,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 80bb982e840a222af9de13a5f00786156149083d93a4c5e42efde001de82fc33682ee42a2a0f6321f840faa92e4adda26204f3764c5b23ee4900300be224f677
+  checksum: 6d93f84303065d5328513dacc6ba6f54712154cfe02b049700c23385f8fda605b392c1323785e2bd01e927f344cd59730ba71558a540053a2801b66b2e7af536
   languageName: node
   linkType: hard
 
