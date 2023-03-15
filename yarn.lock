@@ -3005,7 +3005,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remix-run/node@npm:1.14.3":
+"@remix-run/node@npm:1.14.3, @remix-run/node@npm:^1.14.3":
   version: 1.14.3
   resolution: "@remix-run/node@npm:1.14.3"
   dependencies:
@@ -3019,23 +3019,6 @@ __metadata:
     source-map-support: ^0.5.21
     stream-slice: ^0.1.2
   checksum: 29776fe04034970f2db97655bdaa4327fdd110731e2ca339bc4798df1a7879a8790b2570c29d61c7c51beee7da97b2e968c147bba85532916fd171e07839bacc
-  languageName: node
-  linkType: hard
-
-"@remix-run/node@npm:^1.14.2":
-  version: 1.14.2
-  resolution: "@remix-run/node@npm:1.14.2"
-  dependencies:
-    "@remix-run/server-runtime": 1.14.2
-    "@remix-run/web-fetch": ^4.3.2
-    "@remix-run/web-file": ^3.0.2
-    "@remix-run/web-stream": ^1.0.3
-    "@web3-storage/multipart-parser": ^1.0.0
-    abort-controller: ^3.0.0
-    cookie-signature: ^1.1.0
-    source-map-support: ^0.5.21
-    stream-slice: ^0.1.2
-  checksum: e08d0d1e458a5196ab2dad875b2c7e81e70c2a0ef3c910dc824b0b6ee59093d8ab5e540cc846df195f3516662f37bff6acc33fdf41006aa72e2b392d053867ab
   languageName: node
   linkType: hard
 
@@ -12934,7 +12917,7 @@ __metadata:
     "@babel/preset-react": ^7.16.7
     "@babel/preset-typescript": ^7.21.0
     "@google-cloud/functions-framework": ^3.1.1
-    "@remix-run/node": ^1.14.2
+    "@remix-run/node": ^1.14.3
     "@types/jest": ^29.4.4
     "@types/supertest": ^2.0.10
     babel-jest: ^29.5.0
@@ -12947,7 +12930,7 @@ __metadata:
     typescript: ^4.9.5
   peerDependencies:
     "@google-cloud/functions-framework": ^3.1.1
-    "@remix-run/node": ^1.14.2
+    "@remix-run/node": ^1.14.3
   languageName: unknown
   linkType: soft
 
