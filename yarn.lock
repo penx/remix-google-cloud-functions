@@ -7462,7 +7462,7 @@ __metadata:
     "@types/react": ^18.0.33
     "@types/react-dom": ^18.0.11
     eslint: ^8.37.0
-    firebase-admin: ^11.5.0
+    firebase-admin: ^11.6.0
     firebase-functions: ^4.2.1
     firebase-tools: ^11.25.3
     isbot: ^3.6.8
@@ -7846,9 +7846,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-admin@npm:^11.5.0":
-  version: 11.5.0
-  resolution: "firebase-admin@npm:11.5.0"
+"firebase-admin@npm:^11.6.0":
+  version: 11.6.0
+  resolution: "firebase-admin@npm:11.6.0"
   dependencies:
     "@fastify/busboy": ^1.1.0
     "@firebase/database-compat": ^0.3.0
@@ -7865,7 +7865,7 @@ __metadata:
       optional: true
     "@google-cloud/storage":
       optional: true
-  checksum: f67626c176ef99b1b41d4b34fbacaa8bae89b3ab71a1783f1a4b4fa7691686e6649c69014d999c8d5e0ed7167164aa8da65fbc82f0ae7df667b13a007d0237ca
+  checksum: 4b6c97194ae3d2250f3766820d13cd354d066784f43ce16df0b772e3db6de42a274d7dc4f4264a81e33f40bb0fc7dbb18c14da86917a381982f0f11528e743bf
   languageName: node
   linkType: hard
 
