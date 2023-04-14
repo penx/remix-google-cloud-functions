@@ -7464,7 +7464,7 @@ __metadata:
     eslint: ^8.38.0
     firebase-admin: ^11.6.0
     firebase-functions: ^4.3.0
-    firebase-tools: ^11.26.0
+    firebase-tools: ^11.27.0
     isbot: ^3.6.8
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -7887,9 +7887,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:^11.26.0":
-  version: 11.26.0
-  resolution: "firebase-tools@npm:11.26.0"
+"firebase-tools@npm:^11.27.0":
+  version: 11.27.0
+  resolution: "firebase-tools@npm:11.27.0"
   dependencies:
     "@google-cloud/pubsub": ^3.0.1
     abort-controller: ^3.0.0
@@ -7954,7 +7954,7 @@ __metadata:
     ws: ^7.2.3
   bin:
     firebase: lib/bin/firebase.js
-  checksum: a802ee973103bdb340ab5fdeaa87a268103fdc9a2475a4c307add8b3eafbae894a2978f06e0cfb35bbfd3f87ea1d61f0c90f065004b69724bb51e2703ed7403e
+  checksum: e268db0a55a265c5e3fadaf02217c133be32fb624c4ea40ecdc435009e5d8fd55309138b5db019233f031b2af958b6a5fa24f46d2da75463586ac6a5c44ffd58
   languageName: node
   linkType: hard
 
