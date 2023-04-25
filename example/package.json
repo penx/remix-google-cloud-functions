@@ -28,7 +28,7 @@
     "@playwright/test": "^1.32.3",
     "@remix-run/dev": "*",
     "@remix-run/eslint-config": "*",
-    "@types/react": "^18.0.38",
+    "@types/react": "^18.2.0",
     "@types/react-dom": "^18.0.11",
     "eslint": "^8.39.0",
     "firebase-tools": "^11.29.0",
