@@ -16,7 +16,7 @@ jobs:
       run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
 
     - name: ⎔ Setup Node
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '${{ steps.node_version.outputs.NVMRC }}'
         registry-url: 'https://registry.npmjs.org'
