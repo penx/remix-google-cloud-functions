@@ -1,8 +1,8 @@
 import supertest from "supertest";
 import { createRequest, createResponse } from "node-mocks-http";
 import {
+  createReadableStreamFromReadable,
   createRequestHandler as createRemixRequestHandler,
-  Response as NodeResponse,
   ServerBuild,
 } from "@remix-run/node";
 import { Readable } from "stream";
@@ -54,7 +54,7 @@ describe("google-cloud-functions createRequestHandler", () => {
 
     it("handles requests", async () => {
       mockedCreateRequestHandler.mockImplementation(() => async (req) => {
-        return new NodeResponse(`URL: ${new URL(req.url).pathname}`);
+        return new Response(`URL: ${new URL(req.url).pathname}`);
       });
 
       let request = supertest(createApp());
@@ -67,7 +67,7 @@ describe("google-cloud-functions createRequestHandler", () => {
 
     it("handles null body", async () => {
       mockedCreateRequestHandler.mockImplementation(() => async () => {
-        return new NodeResponse(null, { status: 200 });
+        return new Response(null, { status: 200 });
       });
 
       let request = supertest(createApp());
@@ -79,8 +79,9 @@ describe("google-cloud-functions createRequestHandler", () => {
     // https://github.com/node-fetch/node-fetch/blob/4ae35388b078bddda238277142bf091898ce6fda/test/response.js#L142-L148
     it("handles body as stream", async () => {
       mockedCreateRequestHandler.mockImplementation(() => async () => {
-        let stream = Readable.from("hello world");
-        return new NodeResponse(stream, {
+        let readable = Readable.from("hello world");
+        let stream = createReadableStreamFromReadable(readable);
+        return new Response(stream, {
           status: 200,
         });
       });
@@ -95,7 +96,7 @@ describe("google-cloud-functions createRequestHandler", () => {
 
     it("handles status codes", async () => {
       mockedCreateRequestHandler.mockImplementation(() => async () => {
-        return new NodeResponse(null, { status: 204 });
+        return new Response(null, { status: 204 });
       });
 
       let request = supertest(createApp());
@@ -119,7 +120,7 @@ describe("google-cloud-functions createRequestHandler", () => {
           "Set-Cookie",
           "third=three; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Path=/; HttpOnly; Secure; SameSite=Lax"
         );
-        return new NodeResponse(null, { headers });
+        return new Response(null, { headers });
       });
 
       let request = supertest(createApp());

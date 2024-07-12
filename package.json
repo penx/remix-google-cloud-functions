@@ -14,5 +14,8 @@
   "workspaces": [
     "example",
     "remix-google-cloud-functions"
-  ]
+  ],
+  "dependencies": {
+    "node-gyp": "^10.2.0"
+  }
 }

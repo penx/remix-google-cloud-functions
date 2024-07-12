@@ -1,8 +1,8 @@
 {
   "exclude": ["__tests__"],
   "compilerOptions": {
-    "lib": ["ES2019", "DOM.Iterable"],
-    "target": "ES2019",
+    "lib": ["ES2022", "DOM.Iterable"],
+    "target": "ES2022",
     "module": "CommonJS",
     "skipLibCheck": true,
 

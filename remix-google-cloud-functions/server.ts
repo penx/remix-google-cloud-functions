@@ -2,17 +2,10 @@ import type {
   Request as GcfRequest,
   Response as GcfResponse,
 } from "@google-cloud/functions-framework";
-import type {
-  AppLoadContext,
-  ServerBuild,
-  RequestInit as NodeRequestInit,
-} from "@remix-run/node";
+import type { AppLoadContext, ServerBuild } from "@remix-run/node";
 import {
-  AbortController,
   createRequestHandler as createRemixRequestHandler,
-  Headers as NodeHeaders,
-  Request as NodeRequest,
-  Response as NodeResponse,
+  createReadableStreamFromReadable,
   writeReadableStreamToWritable,
 } from "@remix-run/node";
 
@@ -54,17 +47,14 @@ export function createRequestHandler({
           ? getLoadContext(req, res)
           : undefined;
 
-      let response = (await handleRequest(
-        request,
-        loadContext
-      )) as NodeResponse;
+      let response = await handleRequest(request, loadContext);
 
       await sendRemixResponse(res, response);
     } catch (error) {
       console.error(error);
       await sendRemixResponse(
         res,
-        new NodeResponse("Internal Error", { status: 500 })
+        new Response("Internal Error", { status: 500 })
       );
     }
   };
@@ -72,8 +62,8 @@ export function createRequestHandler({
 
 export function createRemixHeaders(
   requestHeaders: GcfRequest["headers"]
-): NodeHeaders {
-  let headers = new NodeHeaders();
+): Headers {
+  let headers = new Headers();
 
   for (let [key, values] of Object.entries(requestHeaders)) {
     if (values) {
@@ -90,10 +80,7 @@ export function createRemixHeaders(
   return headers;
 }
 
-export function createRemixRequest(
-  req: GcfRequest,
-  res: GcfResponse
-): NodeRequest {
+export function createRemixRequest(req: GcfRequest, res: GcfResponse): Request {
   let origin = `${req.protocol}://${req.get("host")}`;
   let url = new URL(req.url, origin);
 
@@ -101,27 +88,28 @@ export function createRemixRequest(
 
   res.on("close", () => controller.abort());
 
-  let init: NodeRequestInit = {
+  let init: RequestInit = {
     method: req.method,
     headers: createRemixHeaders(req.headers),
-    signal: controller.signal as NodeRequestInit["signal"],
+    signal: controller.signal as RequestInit["signal"],
   };
 
   if (req.method !== "GET" && req.method !== "HEAD") {
-    init.body = req.rawBody;
+    init.body = createReadableStreamFromReadable(req);
+    (init as { duplex: "half" }).duplex = "half";
   }
 
-  return new NodeRequest(url.href, init);
+  return new Request(url.href, init);
 }
 
 async function sendRemixResponse(
   res: GcfResponse,
-  nodeResponse: NodeResponse
+  nodeResponse: Response
 ): Promise<void> {
   res.statusMessage = nodeResponse.statusText;
   res.status(nodeResponse.status);
 
-  for (let [key, values] of Object.entries(nodeResponse.headers.raw())) {
+  for (let [key, values] of nodeResponse.headers.entries()) {
     for (let value of values) {
       res.append(key, value);
     }
